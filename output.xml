@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3 (Python 3.11.5 on win32)" generated="2025-06-09T16:08:49.623836" rpa="false" schemaversion="5">
+<suite id="s1" name="Get Extrato Usuario Cartao Falha" source="c:\Git\e1-automacao-api-q2\tests\get_extrato_usuario_cartao_falha.robot">
+<test id="s1-t1" name="Consulta com Header Malformado" line="33">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-06-09T16:08:49.962692" level="INFO">Creating Session using : alias=api, url=https://10.90.60.45:8444, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL_REAL}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-06-09T16:08:49.961693" elapsed="0.001999"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-06-09T16:08:49.964693" level="INFO">${headers} = {'Invalid-Header': 'Content-Type=application/json'}</msg>
+<var>${headers}</var>
+<arg>Invalid-Header=Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-06-09T16:08:49.964693" elapsed="0.000000"/>
+</kw>
+<kw name="Validar Extrato Usuario Completo" owner="validacoes_usuario">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-06-09T16:08:50.067241" level="INFO">GET Request : url=https://10.90.60.45:8444/server-sigom/rest/usuariocartao/619727/extrato 
+ path_url=/server-sigom/rest/usuariocartao/619727/extrato 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Invalid-Header': 'Content-Type=application/json'} 
+ body=None 
+ </msg>
+<msg time="2025-06-09T16:08:50.068241" level="INFO">GET Response : url=https://10.90.60.45:8444/server-sigom/rest/usuariocartao/619727/extrato 
+ status=401, reason=Unauthorized 
+ headers={'Expires': '0', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Access-Control-Allow-Headers': 'Authorization', 'X-XSS-Protection': '1; mode=block', 'Pragma': 'no-cache', 'Date': 'Mon, 09 Jun 2025 19:08:50 GMT', 'Connection': 'keep-alive', 'Strict-Transport-Security': 'max-age=31536000 ; includeSubDomains', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'X-Powered-By': 'Undertow/1', 'Server': 'WildFly/8', 'X-Frame-Options': 'DENY', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true', 'X-Content-Type-Options': 'nosniff', 'Content-Length': '0', 'Access-Control-Max-Age': 'true'} 
+ body=None 
+ </msg>
+<msg time="2025-06-09T16:08:50.068241" level="INFO">C:\Users\odair.oliveira\AppData\Roaming\Python\Python311\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.90.60.45'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-06-09T16:08:50.068241" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-06-09T16:08:49.966692" elapsed="0.102549"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-09T16:08:50.069241" level="INFO">&gt;&gt;&gt; Status Esperado: 401</msg>
+<arg>&gt;&gt;&gt; Status Esperado: ${status_esperado}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-09T16:08:50.069241" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-09T16:08:50.070243" level="INFO">&gt;&gt;&gt; Status Recebido: 401</msg>
+<arg>&gt;&gt;&gt; Status Recebido: ${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-09T16:08:50.070243" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-09T16:08:50.071240" level="INFO">&gt;&gt;&gt; Body: </msg>
+<arg>&gt;&gt;&gt; Body: ${response.content}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-09T16:08:50.071240" elapsed="0.000000"/>
+</kw>
+<kw name="Validar Status Code" owner="validacoes_usuario">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-06-09T16:08:50.072243" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>${status_esperado}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-06-09T16:08:50.072243" elapsed="0.000000"/>
+</kw>
+<arg>${response}</arg>
+<arg>${status_esperado}</arg>
+<status status="PASS" start="2025-06-09T16:08:50.071240" elapsed="0.001003"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status_esperado}' == '200'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${json}</var>
+<arg>json.loads('''${response.content}''')</arg>
+<arg>modules=json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-06-09T16:08:50.073323" elapsed="0.000000"/>
+</kw>
+<kw name="Validar Estrutura Extrato Usuario" owner="validacoes_usuario">
+<arg>${json}</arg>
+<status status="NOT RUN" start="2025-06-09T16:08:50.073323" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-09T16:08:50.072243" elapsed="0.001080"/>
+</branch>
+<status status="PASS" start="2025-06-09T16:08:50.072243" elapsed="0.001080"/>
+</if>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2025-06-09T16:08:50.073323" elapsed="0.000000"/>
+</return>
+<arg>/server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato</arg>
+<arg>${headers}</arg>
+<arg>401</arg>
+<status status="PASS" start="2025-06-09T16:08:49.965693" elapsed="0.107630"/>
+</kw>
+<doc>Verifica resposta 400 ao enviar header inválido.</doc>
+<status status="PASS" start="2025-06-09T16:08:49.960696" elapsed="0.113586"/>
+</test>
+<status status="PASS" start="2025-06-09T16:08:49.628821" elapsed="0.446419"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Get Extrato Usuario Cartao Falha" id="s1" pass="1" fail="0" skip="0">Get Extrato Usuario Cartao Falha</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-06-09T16:08:49.948655" level="ERROR">Error in file 'c:\Git\e1-automacao-api-q2\tests\get_extrato_usuario_cartao_falha.robot' on line 5: Importing library 'JSONLibrary' failed: ModuleNotFoundError: No module named 'JSONLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  c:\Users\odair.oliveira\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_debug_adapter
+  C:\Git\e1-automacao-api-q2
+  c:\Users\odair.oliveira\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src
+  c:\Users\odair.oliveira\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored
+  C:\Program Files\Python311\python311.zip
+  C:\Program Files\Python311\DLLs
+  C:\Program Files\Python311\Lib
+  C:\Program Files\Python311
+  C:\Users\odair.oliveira\AppData\Roaming\Python\Python311\site-packages
+  C:\Program Files\Python311\Lib\site-packages</msg>
+<msg time="2025-06-09T16:08:49.954690" level="WARN">Error in file 'c:\Git\e1-automacao-api-q2\resources\keywords\validacoes_usuario.robot' on line 31: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-06-09T16:08:49.958789" level="ERROR">Error in file 'c:\Git\e1-automacao-api-q2\resources\keywords\validacoes_usuario.robot' on line 5: Importing library 'JSONLibrary' failed: ModuleNotFoundError: No module named 'JSONLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  c:\Users\odair.oliveira\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_debug_adapter
+  C:\Git\e1-automacao-api-q2
+  c:\Users\odair.oliveira\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src
+  c:\Users\odair.oliveira\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored
+  C:\Program Files\Python311\python311.zip
+  C:\Program Files\Python311\DLLs
+  C:\Program Files\Python311\Lib
+  C:\Program Files\Python311
+  C:\Users\odair.oliveira\AppData\Roaming\Python\Python311\site-packages
+  C:\Program Files\Python311\Lib\site-packages</msg>
+</errors>
+</robot>
