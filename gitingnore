@@ -21,3 +21,6 @@ Thumbs.db
 *.log
 *.html
 *.xml
+
+# Ignorar diretório de resultados
+results/
