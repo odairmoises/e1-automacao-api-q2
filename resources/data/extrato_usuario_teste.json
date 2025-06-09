@@ -1,0 +1,45 @@
+{
+    "codigo": 200,
+    "mensagem": "OK",
+    "eventos": [
+        {
+            "id": 5133711817,
+            "numeroSerieCartao": "3441593670",
+            "usuarioId": 619727,
+            "dataHora": "2025-05-14T17:16:21Z",
+            "dataHoraGMT3": "2025-05-14T14:16:21Z",
+            "valor": 5,
+            "origem": "EVENTO_UTILIZACAO",
+            "tipoCartao": {
+                "codigo": 3,
+                "descricao": "VALE TRANSPORTE"
+            },
+            "saldo": 79.43,
+            "linha": "MULTI-TAR",
+            "tipoDebito": {
+                "codigo": 0,
+                "descricao": "Débito Utilização "
+            },
+            "tarifa": 0.01
+        },
+        {
+            "id": 7027286885,
+            "numeroSerieCartao": "3441593670",
+            "usuarioId": 619727,
+            "dataHora": "2025-05-14T16:51:37Z",
+            "dataHoraGMT3": "2025-05-14T13:51:37Z",
+            "valor": 0,
+            "origem": "BLOQUEIO_PASSAGEM",
+            "tipoCartao": {
+                "codigo": 3,
+                "descricao": "VALE TRANSPORTE"
+            },
+            "saldo": 0,
+            "linha": "E1PIX",
+            "tipoDebito": {
+                "codigo": 21,
+                "descricao": null
+            }
+        }
+    ]
+}
