@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3 (Python 3.11.5 on win32)" generated="2025-06-09T16:46:51.247780" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3 (Python 3.11.5 on win32)" generated="2025-06-09T17:01:37.857006" rpa="false" schemaversion="5">
 <suite id="s1" name="Get Extrato Usuario Cartao Falha" source="c:\Git\e1-automacao-api-q2\tests\get_extrato_usuario_cartao_falha.robot">
 <test id="s1-t1" name="Consulta com Token Inválido" line="10">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-06-09T16:46:51.660186" level="INFO">Creating Session using : alias=api, url=https://10.78.60.875:8444, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2025-06-09T17:01:38.305237" level="INFO">Creating Session using : alias=api, url=https://10.78.60.875:8444, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>api</arg>
 <arg>${BASE_URL_REAL}</arg>
 <arg>verify=False</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-06-09T16:46:51.660186" elapsed="0.002974"/>
+<status status="PASS" start="2025-06-09T17:01:38.305237" elapsed="0.003000"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-06-09T16:46:51.664161" level="INFO">${headers} = {'Accept': 'application/json', 'Auth-Token': 'TOKEN_INVALIDO'}</msg>
+<msg time="2025-06-09T17:01:38.309237" level="INFO">${headers} = {'Accept': 'application/json', 'Auth-Token': 'TOKEN_INVALIDO'}</msg>
 <var>${headers}</var>
 <arg>Accept=application/json</arg>
 <arg>Auth-Token=TOKEN_INVALIDO</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-06-09T16:46:51.664161" elapsed="0.000000"/>
+<status status="PASS" start="2025-06-09T17:01:38.309237" elapsed="0.000999"/>
 </kw>
 <kw name="Validar Extrato Usuario Completo" owner="validacoes_usuario">
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2025-06-09T16:46:51.678588" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000001D49D34C6D0&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
-<msg time="2025-06-09T16:46:51.880375" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000001D49D371E10&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
-<msg time="2025-06-09T16:46:52.281908" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000001D49D373D10&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
-<msg time="2025-06-09T16:46:52.284999" level="FAIL">ConnectionError: HTTPSConnectionPool(host='10.78.60.875', port=8444): Max retries exceeded with url: /server-sigom/rest/usuariocartao/619727/extrato (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000001D49CE90A10&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)"))</msg>
+<msg time="2025-06-09T17:01:38.326098" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000002A10783F910&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
+<msg time="2025-06-09T17:01:38.528933" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000002A10790EE50&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
+<msg time="2025-06-09T17:01:38.930700" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000002A1079237D0&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
+<msg time="2025-06-09T17:01:38.932709" level="FAIL">ConnectionError: HTTPSConnectionPool(host='10.78.60.875', port=8444): Max retries exceeded with url: /server-sigom/rest/usuariocartao/619727/extrato (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000002A107374C90&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)"))</msg>
 <var>${response}</var>
 <arg>api</arg>
 <arg>${endpoint}</arg>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="FAIL" start="2025-06-09T16:46:51.665177" elapsed="0.632982">ConnectionError: HTTPSConnectionPool(host='10.78.60.875', port=8444): Max retries exceeded with url: /server-sigom/rest/usuariocartao/619727/extrato (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000001D49CE90A10&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)"))</status>
+<status status="FAIL" start="2025-06-09T17:01:38.311237" elapsed="0.626468">ConnectionError: HTTPSConnectionPool(host='10.78.60.875', port=8444): Max retries exceeded with url: /server-sigom/rest/usuariocartao/619727/extrato (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000002A107374C90&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)"))</status>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>&gt;&gt;&gt; Status Esperado: ${status_esperado}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-06-09T16:46:52.299160" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-06-09T17:01:38.938706" elapsed="0.000000"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>&gt;&gt;&gt; Status Recebido: ${response.status_code}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-06-09T16:46:52.299160" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-06-09T17:01:38.938706" elapsed="0.000000"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>&gt;&gt;&gt; Body: ${response.content}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-06-09T16:46:52.299160" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-06-09T17:01:38.938706" elapsed="0.000000"/>
 </kw>
 <kw name="Validar Status Code" owner="validacoes_usuario">
 <arg>${response}</arg>
 <arg>${status_esperado}</arg>
-<status status="NOT RUN" start="2025-06-09T16:46:52.299160" elapsed="0.001038"/>
+<status status="NOT RUN" start="2025-06-09T17:01:38.938706" elapsed="0.000000"/>
 </kw>
 <if>
 <branch type="IF" condition="'${status_esperado}' == '200'">
@@ -59,29 +59,29 @@
 <arg>json.loads('''${response.content}''')</arg>
 <arg>modules=json</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-06-09T16:46:52.300198" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-06-09T17:01:38.939705" elapsed="0.000000"/>
 </kw>
 <kw name="Validar Estrutura Extrato Usuario" owner="validacoes_usuario">
 <arg>${json}</arg>
-<status status="NOT RUN" start="2025-06-09T16:46:52.300198" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-06-09T17:01:38.939705" elapsed="0.000000"/>
 </kw>
-<status status="NOT RUN" start="2025-06-09T16:46:52.300198" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-06-09T17:01:38.939705" elapsed="0.000000"/>
 </branch>
-<status status="NOT RUN" start="2025-06-09T16:46:52.300198" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-06-09T17:01:38.939705" elapsed="0.000000"/>
 </if>
 <return>
 <value>${response}</value>
-<status status="NOT RUN" start="2025-06-09T16:46:52.300198" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-06-09T17:01:38.939705" elapsed="0.000000"/>
 </return>
 <arg>/server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato</arg>
 <arg>${headers}</arg>
 <arg>401</arg>
-<status status="FAIL" start="2025-06-09T16:46:51.665177" elapsed="0.635021">ConnectionError: HTTPSConnectionPool(host='10.78.60.875', port=8444): Max retries exceeded with url: /server-sigom/rest/usuariocartao/619727/extrato (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000001D49CE90A10&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)"))</status>
+<status status="FAIL" start="2025-06-09T17:01:38.310236" elapsed="0.629469">ConnectionError: HTTPSConnectionPool(host='10.78.60.875', port=8444): Max retries exceeded with url: /server-sigom/rest/usuariocartao/619727/extrato (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000002A107374C90&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)"))</status>
 </kw>
 <doc>Verifica resposta 401 ao usar token inválido.</doc>
-<status status="FAIL" start="2025-06-09T16:46:51.659153" elapsed="0.642006">ConnectionError: HTTPSConnectionPool(host='10.78.60.875', port=8444): Max retries exceeded with url: /server-sigom/rest/usuariocartao/619727/extrato (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000001D49CE90A10&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)"))</status>
+<status status="FAIL" start="2025-06-09T17:01:38.304236" elapsed="0.636472">ConnectionError: HTTPSConnectionPool(host='10.78.60.875', port=8444): Max retries exceeded with url: /server-sigom/rest/usuariocartao/619727/extrato (Caused by NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000002A107374C90&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)"))</status>
 </test>
-<status status="FAIL" start="2025-06-09T16:46:51.253699" elapsed="1.048460"/>
+<status status="FAIL" start="2025-06-09T17:01:37.862005" elapsed="1.079700"/>
 </suite>
 <statistics>
 <total>
@@ -94,9 +94,9 @@
 </suite>
 </statistics>
 <errors>
-<msg time="2025-06-09T16:46:51.655148" level="WARN">Error in file 'c:\Git\e1-automacao-api-q2\resources\keywords\validacoes_usuario.robot' on line 31: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
-<msg time="2025-06-09T16:46:51.678588" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000001D49D34C6D0&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
-<msg time="2025-06-09T16:46:51.880375" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000001D49D371E10&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
-<msg time="2025-06-09T16:46:52.281908" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000001D49D373D10&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
+<msg time="2025-06-09T17:01:38.300239" level="WARN">Error in file 'c:\Git\e1-automacao-api-q2\resources\keywords\validacoes_usuario.robot' on line 31: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-06-09T17:01:38.326098" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000002A10783F910&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
+<msg time="2025-06-09T17:01:38.528933" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000002A10790EE50&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
+<msg time="2025-06-09T17:01:38.930700" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPSConnection object at 0x000002A1079237D0&gt;: Failed to resolve '10.78.60.875' ([Errno 11001] getaddrinfo failed)")': /server-sigom/rest/usuariocartao/619727/extrato</msg>
 </errors>
 </robot>
