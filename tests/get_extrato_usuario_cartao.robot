@@ -17,4 +17,3 @@ Consultar Extrato do Usuário por USUARIO_ID
     ...    ${headers}
     ...    200
     ...    ${JSON_EXTRATO_ESPERADO}
-

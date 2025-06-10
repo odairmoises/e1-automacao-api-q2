@@ -4,7 +4,8 @@ Library           Collections
 Library           BuiltIn
 Library           JSONLibrary
 Resource          ../resources/variables.resource
-Resource          ../resources/keywords/validacoes_usuario.robot
+Resource          ../resources/keywords/validacao_erro_extrato_usuario.robot
+Resource          ../resources//keywords/validacao_extrato_usuario.robot
 
 *** Test Cases ***
 Consulta com Token Inválido
@@ -13,7 +14,7 @@ Consulta com Token Inválido
     ${headers}=    Create Dictionary
     ...    Accept=application/json
     ...    Auth-Token=TOKEN_INVALIDO
-    Validar Extrato Usuario Completo    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401
+    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401
 
 Consulta com Usuário Inexistente
     [Documentation]    Verifica resposta 404 ao consultar extrato de usuário inexistente.
@@ -21,18 +22,18 @@ Consulta com Usuário Inexistente
     ${headers}=    Create Dictionary
     ...    Accept=application/json
     ...    Auth-Token=${AUTH_TOKEN_REAL}
-    Validar Extrato Usuario Completo    /server-sigom/rest/usuariocartao/${USUARIO_INEXISTENTE}/extrato    ${headers}    404
+    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_INEXISTENTE}/extrato    ${headers}    404
 
 Consulta sem Token
     [Documentation]    Verifica resposta 403 ou 401 ao omitir token de autenticação.
     Create Session     api    ${BASE_URL_REAL}    verify=False
     ${headers}=    Create Dictionary
     ...    Accept=application/json
-    Validar Extrato Usuario Completo    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401
+    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401
 
 Consulta com Header Malformado
     [Documentation]    Verifica resposta 400 ao enviar header inválido.
     Create Session     api    ${BASE_URL_REAL}    verify=False
     ${headers}=    Create Dictionary
     ...    Invalid-Header=Content-Type=application/json
-    Validar Extrato Usuario Completo    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401
+    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401
