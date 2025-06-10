@@ -32,7 +32,7 @@ Consulta sem Token
     Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401
 
 Consulta com Header Malformado
-    [Documentation]    Verifica resposta 400 ao enviar header inválido.
+    [Documentation]    Verifica resposta 400 ou 401 ao enviar header inválido.
     Create Session     api    ${BASE_URL_REAL}    verify=False
     ${headers}=    Create Dictionary
     ...    Invalid-Header=Content-Type=application/json
