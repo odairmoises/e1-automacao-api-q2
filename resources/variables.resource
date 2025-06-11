@@ -1,6 +1,6 @@
 *** Variables ***
 ${BASE_URL_FAKE}        https://IP:PORTA
-${BASE_URL_REAL}        https://10.90.60.45:8444
+${BASE_URL_REAL}        https://teste.empresa1.com.br:8444/
 ${AUTH_TOKEN_FAKE}      fa5kYSBlfsfsSBzdGc1RFM=
 ${USUARIO_ID}      619727
 ${USUARIO_INEXISTENTE}    §
