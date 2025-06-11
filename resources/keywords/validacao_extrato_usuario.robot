@@ -32,7 +32,7 @@ Carregar JSON de arquivo
     [Arguments]    ${caminho_arquivo}
     ${conteudo}=    Get File    ${caminho_arquivo}
     ${json}=    Evaluate    json.loads('''${conteudo}''')    modules=json
-    [Return]    ${json}
+    RETURN    ${json}
 
 
 Validar Status Code
@@ -53,5 +53,5 @@ Validar Extrato Usuario Completo com responseBody
         Validar Campos do Evento de Extrato    ${json_retorno['eventos'][0]}
     END
 
-    [Return]    ${response}
+    RETURN    ${response}
 
