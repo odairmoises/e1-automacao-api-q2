@@ -3,9 +3,9 @@ name: Robot Framework API Tests Empresa 1
 on:
   schedule:
     # Executa o workflow automaticamente nos horários abaixo (em UTC)
-    - cron: '22 01 * * 1-5'    # Segunda a sexta, 22:05
-    - cron: '25 01 * * *'      # Todos os dias, 22:38 
-    - cron: '28 01 * * *'    # Segunda a sexta, 11:00 
+    - cron: '30 04 * * 1-5'    # Segunda a sexta, 22:05
+    - cron: '33 04 * * *'      # Todos os dias, 22:38 
+    - cron: '35 04 * * *'    # Segunda a sexta, 11:00 
     - cron: '5 14 * * *'      # Todos os dias, 14:05 
 
   push:
