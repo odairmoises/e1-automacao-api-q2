@@ -26,11 +26,11 @@ Consulta sem Token
     Create Session     api    ${BASE_URL_REAL}    verify=False
     ${headers}=    Create Dictionary
     ...    Accept=application/json
-    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401    403
+    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401
 
 Consulta com Header Malformado
     [Documentation]    Verifica resposta 400 ou 401 ao enviar header inválido.
     Create Session     api    ${BASE_URL_REAL}    verify=False
     ${headers}=    Create Dictionary
     ...    Invalid-Header=Content-Type=application/json
-    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    400    401
+    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    400
