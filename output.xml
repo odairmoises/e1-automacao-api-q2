@@ -1,218 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3 (Python 3.11.5 on win32)" generated="2025-06-10T20:24:36.802102" rpa="false" schemaversion="5">
-<suite id="s1" name="Get Extrato Usuario Cartao" source="c:\Git\e1-automacao-api-q2\tests\get_extrato_usuario_cartao.robot">
-<test id="s1-t1" name="Consultar Extrato do Usuário por USUARIO_ID" line="7">
+<robot generator="Robot 7.3 (Python 3.11.5 on win32)" generated="2025-06-17T15:18:30.139654" rpa="false" schemaversion="5">
+<suite id="s1" name="Get Extrato Usuario Cartao Falha" source="c:\Git\e1-automacao-api-q2\tests\get_extrato_usuario_cartao_falha.robot">
+<test id="s1-t1" name="Consulta sem Token" line="24">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-06-10T20:24:37.275086" level="INFO">Creating Session using : alias=api, url=https://10.90.60.45:8444, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2025-06-17T15:18:30.457631" level="INFO">Creating Session using : alias=api, url=https://teste.empresa1.com.br:8444/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>api</arg>
 <arg>${BASE_URL_REAL}</arg>
 <arg>verify=False</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-06-10T20:24:37.274077" elapsed="0.003006"/>
+<status status="PASS" start="2025-06-17T15:18:30.457631" elapsed="0.001019"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-06-10T20:24:37.278083" level="INFO">${headers} = {'Accept': 'application/json', 'Auth-Token': 'cmV2ZW5kYSBlbXByZXNhMSBzdGc1RFM='}</msg>
+<msg time="2025-06-17T15:18:30.460641" level="INFO">${headers} = {'Accept': 'application/json'}</msg>
 <var>${headers}</var>
 <arg>Accept=application/json</arg>
-<arg>Auth-Token=${AUTH_TOKEN_REAL}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-06-10T20:24:37.278083" elapsed="0.000000"/>
+<status status="PASS" start="2025-06-17T15:18:30.459634" elapsed="0.001007"/>
 </kw>
-<kw name="Validar Extrato Usuario Completo com responseBody" owner="validacao_extrato_usuario">
+<kw name="Validar Resposta de Erro do Extrato de Usuário" owner="validacao_erro_extrato_usuario">
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2025-06-10T20:24:38.013704" level="INFO">GET Request : url=https://10.90.60.45:8444/server-sigom/rest/usuariocartao/619727/extrato 
+<msg time="2025-06-17T15:18:30.663413" level="INFO">GET Request : url=https://teste.empresa1.com.br:8444/server-sigom/rest/usuariocartao/619727/extrato 
  path_url=/server-sigom/rest/usuariocartao/619727/extrato 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Auth-Token': 'cmV2ZW5kYSBlbXByZXNhMSBzdGc1RFM='} 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg time="2025-06-10T20:24:38.014702" level="INFO">GET Response : url=https://10.90.60.45:8444/server-sigom/rest/usuariocartao/619727/extrato 
- status=200, reason=OK 
- headers={'Content-Encoding': 'gzip', 'Expires': '0', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Set-Cookie': 'JSESSIONID=PnyBs_e13wUtQuOnqEf2z9MPCiOPRlmw0lSSBar3.gde-aut12; path=/server-sigom; secure; HttpOnly', 'Access-Control-Allow-Headers': 'Authorization', 'X-XSS-Protection': '1; mode=block', 'Pragma': 'no-cache', 'Date': 'Tue, 10 Jun 2025 23:24:38 GMT', 'Connection': 'keep-alive', 'Strict-Transport-Security': 'max-age=31536000 ; includeSubDomains', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'X-Powered-By': 'Undertow/1', 'Server': 'WildFly/8', 'X-Frame-Options': 'DENY', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true', 'X-Content-Type-Options': 'nosniff', 'Content-Type': 'application/json', 'Content-Length': '358', 'Access-Control-Max-Age': 'true'} 
- body={"codigo":200,"mensagem":"OK","eventos":[{"id":5133711817,"numeroSerieCartao":"3441593670","usuarioId":619727,"dataHora":"2025-05-14T17:16:21Z","dataHoraGMT3":"2025-05-14T14:16:21Z","valor":5,"origem":"EVENTO_UTILIZACAO","tipoCartao":{"codigo":3,"descricao":"VALE TRANSPORTE"},"saldo":79.43,"linha":"MULTI-TAR","tipoDebito":{"codigo":0,"descricao":"Débito Utilização "},"tarifa":0.01},{"id":7027286885,"numeroSerieCartao":"3441593670","usuarioId":619727,"dataHora":"2025-05-14T16:51:37Z","dataHoraGMT3":"2025-05-14T13:51:37Z","valor":0,"origem":"BLOQUEIO_PASSAGEM","tipoCartao":{"codigo":3,"descricao":"VALE TRANSPORTE"},"saldo":0,"linha":"E1PIX","tipoDebito":{"codigo":21,"descricao":null}}]} 
+<msg time="2025-06-17T15:18:30.664343" level="INFO">GET Response : url=https://teste.empresa1.com.br:8444/server-sigom/rest/usuariocartao/619727/extrato 
+ status=401, reason=Unauthorized 
+ headers={'Expires': '0', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Access-Control-Allow-Headers': 'Authorization', 'X-XSS-Protection': '1; mode=block', 'Pragma': 'no-cache', 'Date': 'Tue, 17 Jun 2025 18:18:30 GMT', 'Connection': 'keep-alive', 'Strict-Transport-Security': 'max-age=31536000 ; includeSubDomains', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'X-Powered-By': 'Undertow/1', 'Server': 'WildFly/8', 'X-Frame-Options': 'DENY', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true', 'X-Content-Type-Options': 'nosniff', 'Content-Length': '0', 'Access-Control-Max-Age': 'true'} 
+ body=None 
  </msg>
-<msg time="2025-06-10T20:24:38.014702" level="INFO">C:\Users\odair.oliveira\AppData\Roaming\Python\Python311\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.90.60.45'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2025-06-17T15:18:30.664343" level="INFO">C:\Users\odair.oliveira\AppData\Roaming\Python\Python311\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'teste.empresa1.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2025-06-10T20:24:38.014702" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg time="2025-06-17T15:18:30.665291" level="INFO">${response} = &lt;Response [401]&gt;</msg>
 <var>${response}</var>
 <arg>api</arg>
 <arg>${endpoint}</arg>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-06-10T20:24:37.279084" elapsed="0.735618"/>
+<status status="PASS" start="2025-06-17T15:18:30.462657" elapsed="0.202634"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-06-10T20:24:38.015703" level="INFO">&gt;&gt;&gt; Status Esperado: 200</msg>
+<msg time="2025-06-17T15:18:30.665291" level="INFO">&gt;&gt;&gt; Status Esperado: 401</msg>
 <arg>&gt;&gt;&gt; Status Esperado: ${status_esperado}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.015703" elapsed="0.000000"/>
+<status status="PASS" start="2025-06-17T15:18:30.665291" elapsed="0.000964"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-06-10T20:24:38.016706" level="INFO">&gt;&gt;&gt; Status Recebido: 200</msg>
+<msg time="2025-06-17T15:18:30.666255" level="INFO">&gt;&gt;&gt; Status Recebido: 401</msg>
 <arg>&gt;&gt;&gt; Status Recebido: ${response.status_code}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.016706" elapsed="0.000000"/>
+<status status="PASS" start="2025-06-17T15:18:30.666255" elapsed="0.000000"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-06-10T20:24:38.017803" level="INFO">&gt;&gt;&gt; Body: {"codigo":200,"mensagem":"OK","eventos":[{"id":5133711817,"numeroSerieCartao":"3441593670","usuarioId":619727,"dataHora":"2025-05-14T17:16:21Z","dataHoraGMT3":"2025-05-14T14:16:21Z","valor":5,"origem":"EVENTO_UTILIZACAO","tipoCartao":{"codigo":3,"descricao":"VALE TRANSPORTE"},"saldo":79.43,"linha":"MULTI-TAR","tipoDebito":{"codigo":0,"descricao":"DÃ©bito UtilizaÃ§Ã£o "},"tarifa":0.01},{"id":7027286885,"numeroSerieCartao":"3441593670","usuarioId":619727,"dataHora":"2025-05-14T16:51:37Z","dataHoraGMT3":"2025-05-14T13:51:37Z","valor":0,"origem":"BLOQUEIO_PASSAGEM","tipoCartao":{"codigo":3,"descricao":"VALE TRANSPORTE"},"saldo":0,"linha":"E1PIX","tipoDebito":{"codigo":21,"descricao":null}}]}</msg>
+<msg time="2025-06-17T15:18:30.667252" level="INFO">&gt;&gt;&gt; Body: </msg>
 <arg>&gt;&gt;&gt; Body: ${response.content}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.017803" elapsed="0.000000"/>
+<status status="PASS" start="2025-06-17T15:18:30.667252" elapsed="0.000000"/>
 </kw>
-<kw name="Validar Status Code" owner="validacao_extrato_usuario">
+<kw name="Validar Status Code" owner="validacao_erro_extrato_usuario">
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-06-10T20:24:38.018722" level="INFO">Argument types are:
+<msg time="2025-06-17T15:18:30.668247" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${response.status_code}</arg>
 <arg>${status_esperado}</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.018722" elapsed="0.000000"/>
+<status status="PASS" start="2025-06-17T15:18:30.667252" elapsed="0.000995"/>
 </kw>
 <arg>${response}</arg>
 <arg>${status_esperado}</arg>
-<status status="PASS" start="2025-06-10T20:24:38.017803" elapsed="0.000919"/>
+<status status="PASS" start="2025-06-17T15:18:30.667252" elapsed="0.000995"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2025-06-17T15:18:30.668247" level="INFO">${status_esperado_str} = 401</msg>
+<var>${status_esperado_str}</var>
+<arg>${status_esperado}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2025-06-17T15:18:30.668247" elapsed="0.000000"/>
 </kw>
 <if>
-<branch type="IF" condition="'${status_esperado}' == '200'">
+<branch type="IF" condition="'${status_esperado_str}' != '200' and '${response.content}' != ''">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-06-10T20:24:38.019754" level="INFO">${json_retorno} = {'codigo': 200, 'mensagem': 'OK', 'eventos': [{'id': 5133711817, 'numeroSerieCartao': '3441593670', 'usuarioId': 619727, 'dataHora': '2025-05-14T17:16:21Z', 'dataHoraGMT3': '2025-05-14T14:16:21Z', 'va...</msg>
 <var>${json_retorno}</var>
 <arg>json.loads('''${response.content}''')</arg>
 <arg>modules=json</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.019754" elapsed="0.000000"/>
-</kw>
-<kw name="Carregar JSON de arquivo" owner="validacao_extrato_usuario">
-<kw name="Get File" owner="OperatingSystem">
-<msg time="2025-06-10T20:24:38.020797" level="INFO" html="true">Getting file '&lt;a href="file://c:\Git\e1-automacao-api-q2\resources\data\extrato_usuario_teste.json"&gt;c:\Git\e1-automacao-api-q2\resources\data\extrato_usuario_teste.json&lt;/a&gt;'.</msg>
-<msg time="2025-06-10T20:24:38.021703" level="INFO">${conteudo} = {
-    "codigo": 200,
-    "mensagem": "OK",
-    "eventos": [
-        {
-            "id": 5133711817,
-            "numeroSerieCartao": "3441593670",
-            "usuarioId": 619727,
-            "dataHor...</msg>
-<var>${conteudo}</var>
-<arg>${caminho_arquivo}</arg>
-<doc>Returns the contents of a specified file.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.020797" elapsed="0.000906"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-06-10T20:24:38.022704" level="INFO">${json} = {'codigo': 200, 'mensagem': 'OK', 'eventos': [{'id': 5133711817, 'numeroSerieCartao': '3441593670', 'usuarioId': 619727, 'dataHora': '2025-05-14T17:16:21Z', 'dataHoraGMT3': '2025-05-14T14:16:21Z', 'va...</msg>
-<var>${json}</var>
-<arg>json.loads('''${conteudo}''')</arg>
-<arg>modules=json</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.021703" elapsed="0.001001"/>
-</kw>
-<return>
-<value>${json}</value>
-<status status="PASS" start="2025-06-10T20:24:38.022704" elapsed="0.000000"/>
-</return>
-<msg time="2025-06-10T20:24:38.023703" level="INFO">${json_esperado} = {'codigo': 200, 'mensagem': 'OK', 'eventos': [{'id': 5133711817, 'numeroSerieCartao': '3441593670', 'usuarioId': 619727, 'dataHora': '2025-05-14T17:16:21Z', 'dataHoraGMT3': '2025-05-14T14:16:21Z', 'va...</msg>
-<var>${json_esperado}</var>
-<arg>${arquivo_json_esperado}</arg>
-<status status="PASS" start="2025-06-10T20:24:38.020797" elapsed="0.002906"/>
-</kw>
-<kw name="Get Length" owner="BuiltIn">
-<msg time="2025-06-10T20:24:38.024704" level="INFO">Length is 2.</msg>
-<msg time="2025-06-10T20:24:38.024704" level="INFO">${qtde} = 2</msg>
-<var>${qtde}</var>
-<arg>${json_retorno['eventos']}</arg>
-<doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.023703" elapsed="0.001001"/>
-</kw>
-<kw name="Validar Campos do Evento de Extrato" owner="validacao_extrato_usuario">
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${evento}</arg>
-<arg>id</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.026704" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-06-17T15:18:30.669247" elapsed="0.000000"/>
 </kw>
 <kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${evento}</arg>
-<arg>numeroSerieCartao</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.026704" elapsed="0.000000"/>
-</kw>
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${evento}</arg>
-<arg>usuarioId</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.026704" elapsed="0.000000"/>
-</kw>
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${evento}</arg>
-<arg>dataHora</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.026704" elapsed="0.000997"/>
-</kw>
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${evento}</arg>
-<arg>dataHoraGMT3</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.027701" elapsed="0.000000"/>
-</kw>
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${evento}</arg>
-<arg>valor</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.027701" elapsed="0.000000"/>
-</kw>
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${evento}</arg>
-<arg>origem</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.028702" elapsed="0.000000"/>
-</kw>
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${evento}</arg>
-<arg>tipoCartao</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.028702" elapsed="0.000000"/>
-</kw>
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${evento}</arg>
-<arg>saldo</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.028702" elapsed="0.001002"/>
-</kw>
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${evento['tipoCartao']}</arg>
+<arg>${json_retorno}</arg>
 <arg>codigo</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.029704" elapsed="0.000999"/>
+<status status="NOT RUN" start="2025-06-17T15:18:30.669247" elapsed="0.000000"/>
 </kw>
 <kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${evento['tipoCartao']}</arg>
-<arg>descricao</arg>
+<arg>${json_retorno}</arg>
+<arg>mensagem</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2025-06-10T20:24:38.030703" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-06-17T15:18:30.669247" elapsed="0.000000"/>
 </kw>
-<arg>${json_retorno['eventos'][0]}</arg>
-<status status="PASS" start="2025-06-10T20:24:38.024704" elapsed="0.007001"/>
+<if>
+<branch type="IF" condition="'${codigo_esperado}' != 'None'">
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_retorno['codigo']}</arg>
+<arg>${codigo_esperado}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-06-17T15:18:30.669247" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-06-10T20:24:38.019754" elapsed="0.011951"/>
+<status status="NOT RUN" start="2025-06-17T15:18:30.669247" elapsed="0.000000"/>
 </branch>
-<status status="PASS" start="2025-06-10T20:24:38.019754" elapsed="0.011951"/>
+<status status="NOT RUN" start="2025-06-17T15:18:30.669247" elapsed="0.001000"/>
+</if>
+<if>
+<branch type="IF" condition="'${mensagem_esperada}' != 'None'">
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_retorno['mensagem']}</arg>
+<arg>${mensagem_esperada}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-06-17T15:18:30.670247" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-06-17T15:18:30.670247" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2025-06-17T15:18:30.670247" elapsed="0.000000"/>
+</if>
+<status status="NOT RUN" start="2025-06-17T15:18:30.668247" elapsed="0.002000"/>
+</branch>
+<branch type="ELSE IF" condition="'${response.content}' == ''">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-06-17T15:18:30.670247" level="INFO">&gt;&gt; Corpo da resposta está vazio, não será feita validação de campos JSON.</msg>
+<arg>&gt;&gt; Corpo da resposta está vazio, não será feita validação de campos JSON.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-06-17T15:18:30.670247" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-06-17T15:18:30.670247" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-06-17T15:18:30.668247" elapsed="0.002000"/>
 </if>
 <return>
 <value>${response}</value>
-<status status="PASS" start="2025-06-10T20:24:38.031705" elapsed="0.000000"/>
+<status status="PASS" start="2025-06-17T15:18:30.671247" elapsed="0.000000"/>
 </return>
 <arg>/server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato</arg>
 <arg>${headers}</arg>
-<arg>200</arg>
-<arg>${JSON_EXTRATO_ESPERADO}</arg>
-<status status="PASS" start="2025-06-10T20:24:37.279084" elapsed="0.752621"/>
+<arg>401</arg>
+<status status="PASS" start="2025-06-17T15:18:30.461642" elapsed="0.209605"/>
 </kw>
-<doc>Esse teste acessa o endpoint /usuariocartao/619727/extrato usando Auth-Token</doc>
-<status status="PASS" start="2025-06-10T20:24:37.272896" elapsed="0.759809"/>
+<doc>Verifica resposta 403 ou 401 ao omitir token de autenticação.</doc>
+<status status="PASS" start="2025-06-17T15:18:30.455630" elapsed="0.216618"/>
 </test>
-<status status="PASS" start="2025-06-10T20:24:36.807095" elapsed="1.226607"/>
+<status status="PASS" start="2025-06-17T15:18:30.144546" elapsed="0.528701"/>
 </suite>
 <statistics>
 <total>
@@ -221,11 +158,10 @@
 <tag>
 </tag>
 <suite>
-<stat name="Get Extrato Usuario Cartao" id="s1" pass="1" fail="0" skip="0">Get Extrato Usuario Cartao</stat>
+<stat name="Get Extrato Usuario Cartao Falha" id="s1" pass="1" fail="0" skip="0">Get Extrato Usuario Cartao Falha</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-06-10T20:24:37.160290" level="WARN">Error in file 'c:\Git\e1-automacao-api-q2\resources\keywords\validacao_extrato_usuario.robot' on line 35: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
-<msg time="2025-06-10T20:24:37.162289" level="WARN">Error in file 'c:\Git\e1-automacao-api-q2\resources\keywords\validacao_extrato_usuario.robot' on line 56: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-06-17T15:18:30.453630" level="ERROR">Error in file 'c:\Git\e1-automacao-api-q2\resources\keywords\validacao_erro_extrato_usuario.robot' on line 4: Resource file '..\resources\variables.resource' does not exist.</msg>
 </errors>
 </robot>

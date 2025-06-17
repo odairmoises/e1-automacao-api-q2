@@ -1,5 +1,7 @@
 *** Settings ***
-Resource          ../resources/variables.resource
+Library    Collections
+Library    RequestsLibrary
+Resource    ../variables.resource
 *** Keywords ***
 
 Validar Status Code
