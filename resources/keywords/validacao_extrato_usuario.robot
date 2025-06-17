@@ -46,7 +46,7 @@ Validar Extrato Usuario Completo com responseBody
     Log    >>> Body: ${response.content}
     Validar Status Code    ${response}    ${status_esperado}
 
-    IF    '${status_esperado}' == '200'
+    IF    '${status_esperado}' == 200
         ${json_retorno}=    Evaluate    json.loads('''${response.content}''')    modules=json
         ${json_esperado}=    Carregar JSON De Arquivo    ${arquivo_json_esperado}
         ${qtde}=    Get Length    ${json_retorno['eventos']}
