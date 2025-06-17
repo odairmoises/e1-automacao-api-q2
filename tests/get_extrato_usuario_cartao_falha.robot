@@ -33,4 +33,4 @@ Consulta com Header Malformado
     Create Session     api    ${BASE_URL_REAL}    verify=False
     ${headers}=    Create Dictionary
     ...    Invalid-Header=Content-Type=application/json
-    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    400    401
+    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401
