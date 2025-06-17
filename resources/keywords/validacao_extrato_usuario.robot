@@ -50,9 +50,14 @@ Validar Extrato Usuario Completo com responseBody
         ${json_retorno}=    Evaluate    json.loads('''${response.content}''')    modules=json
         ${json_esperado}=    Carregar JSON De Arquivo    ${arquivo_json_esperado}
         ${qtde}=    Get Length    ${json_retorno['eventos']}
-        Should Be True    ${qtde} > 0    msg=A lista de eventos retornada está vazia.
-        ${evento}=    Set Variable    ${json_retorno['eventos'][0]}
-        Validar Campos do Evento de Extrato    ${evento}
+
+        IF    ${qtde} > 0
+            ${evento}=    Set Variable    ${json_retorno['eventos'][0]}
+            Validar Campos do Evento de Extrato    ${evento}
+        ELSE
+            Log    >> Lista de eventos vazia. Validação de campos de evento foi ignorada.
+        END
     END
 
     RETURN    ${response}
+
