@@ -60,4 +60,3 @@ Validar Extrato Usuario Completo com responseBody
     END
 
     RETURN    ${response}
-
