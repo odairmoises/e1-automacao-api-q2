@@ -15,4 +15,4 @@ Validar Resposta de Erro do Extrato de Usuário
         Log    >> Corpo da reposta está vazio, não será feita validação de campos JSON.
     END
 
-    [Return]    ${response}
+    RETURN    ${response}
