@@ -5,50 +5,60 @@ on:
     branches:
       - main  # Executa quando houver push na branch main
   pull_request:
-  workflow_dispatch:  # Habilita execução manual via botão "Run workflow"
+  workflow_dispatch:
+    # Executa quando abrir ou atualizar um pull request (PR)
   schedule:
     # Executa o workflow automaticamente nos horários abaixo (em UTC)
-    - cron: '45 19 * * *'  # 12:33 BRT
-    - cron: '50 19 * * *'  # 12:40 BRT
-    - cron: '55 19 * * *'  # 12:45 BRT
-
+    - cron: '33 15 * * *'  # 12:33 BRT
+    - cron: '40 15 * * *'  # 12:40 BRT
+    - cron: '45 15 * * *'  # 12:45 BRT
+    
 jobs:
   run-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Máquina virtual do Linux para executar o job
     
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+    - name: Checkout repo
+      uses: actions/checkout@v3
+      # Baixa o código do seu repositório para a máquina virtual
 
-      - name: Identificar tipo de execução
-        run: echo "Executado via: ${{ github.event_name }}" > execucao_info.txt
+    - name: Identificar tipo de execução
+      run: |
+        echo "Executado via: ${{ github.event_name }}" > execucao_info.txt
+      # Cria um arquivo com o tipo de evento que disparou o workflow (push, pull_request ou schedule)
 
-      - name: Mostrar info da execução nos logs
-        run: cat execucao_info.txt
+    - name: Mostrar info da execução nos logs
+      run: cat execucao_info.txt
+      # Mostra no log do workflow o conteúdo do arquivo para facilitar o monitoramento
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+      # Configura o Python 3.11 na máquina virtual para rodar os testes Robot Framework
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+      # Instala as dependências Python listadas no seu requirements.txt
 
-      - name: Registrar tipo de execução do teste no relatório
-        run: |
-          mkdir -p results
-          echo "Tipo de execução: ${{ github.event_name }}" > results/execucao_info.txt
-          echo "Data e hora UTC: $(date -u)" >> results/execucao_info.txt
+    - name: Registrar tipo de execução do teste no relatório
+      run: |
+        mkdir -p results
+        echo "Tipo de execução: ${{ github.event_name }}" > results/execucao_info.txt
+        echo "Data e hora UTC: $(date -u)" >> results/execucao_info.txt
+      # Cria uma pasta para resultados e salva o tipo de execução e a data/hora em um arquivo para registro
 
-      - name: Run Robot Framework tests
-        run: |
-          mkdir -p results
-          robot -d results tests/
+    - name: Run Robot Framework tests
+      run: |
+        mkdir -p results
+        robot -d results tests/
+        # Executa os testes Robot Framework, salvando os relatórios na pasta results/
 
-      - name: Upload Robot Framework results
-        uses: actions/upload-artifact@v4
-        with:
-          name: robot-results
-          path: results/
+    - name: Upload Robot Framework results
+      uses: actions/upload-artifact@v4
+      with:
+        name: robot-results
+        path: results/
+      # Faz o upload dos relatórios gerados para que possam ser baixados ou usados em outros jobs ou ferramentas
