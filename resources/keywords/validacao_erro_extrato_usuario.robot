@@ -1,6 +1,6 @@
 *** Settings ***
 Resource          ../resources/variables.resource
-Resource          ../../resources/keywords/validacao_extrato_usuario.robot
+Resource          ../resources/keywords/validacao_erro_extrato_usuario.robot
 *** Keywords ***
 Validar Resposta de Erro do Extrato de Usuário
     [Arguments]    ${endpoint}    ${headers}    ${status_esperado}    ${codigo_esperado}=None    ${mensagem_esperada}=None
