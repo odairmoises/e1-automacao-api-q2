@@ -4,7 +4,7 @@ on:
   schedule:
     # Executa o workflow automaticamente nos horários abaixo (em UTC)
     - cron: '5 22 * * 1-5'    # Segunda a sexta, 22:05
-    - cron: '35 22 * * *'      # Todos os dias, 22:05 
+    - cron: '38 22 * * *'      # Todos os dias, 22:38 
     - cron: '0 11 * * 1-5'    # Segunda a sexta, 11:00 
     - cron: '5 14 * * *'      # Todos os dias, 14:05 
 
