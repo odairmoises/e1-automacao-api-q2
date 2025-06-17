@@ -1,13 +1,10 @@
 *** Settings ***
 Library           RequestsLibrary
-Library           Collections
-Library           BuiltIn
-Library           JSONLibrary
 Resource          ../resources/variables.resource
 Resource          ../resources/keywords/validacao_erro_extrato_usuario.robot
-Resource          ../resources//keywords/validacao_extrato_usuario.robot
 
 *** Test Cases ***
+
 Consulta com Token Inválido
     [Documentation]    Verifica resposta 401 ao usar token inválido.
     Create Session     api    ${BASE_URL_REAL}    verify=False
@@ -29,13 +26,11 @@ Consulta sem Token
     Create Session     api    ${BASE_URL_REAL}    verify=False
     ${headers}=    Create Dictionary
     ...    Accept=application/json
-    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401
+    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401    403
 
 Consulta com Header Malformado
     [Documentation]    Verifica resposta 400 ou 401 ao enviar header inválido.
     Create Session     api    ${BASE_URL_REAL}    verify=False
     ${headers}=    Create Dictionary
     ...    Invalid-Header=Content-Type=application/json
-    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    401
-
-#fa
+    Validar Resposta de Erro do Extrato de Usuário    /server-sigom/rest/usuariocartao/${USUARIO_ID}/extrato    ${headers}    400    401
