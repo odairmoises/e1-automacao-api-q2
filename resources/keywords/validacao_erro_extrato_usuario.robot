@@ -1,7 +1,11 @@
 *** Settings ***
 Resource          ../resources/variables.resource
-Resource          resources/keywords/validacao_erro_extrato_usuario.robot
 *** Keywords ***
+
+Validar Status Code
+    [Arguments]    ${response}    ${status_esperado}
+    Should Be Equal As Integers    ${response.status_code}    ${status_esperado}
+
 Validar Resposta de Erro do Extrato de Usuário
     [Arguments]    ${endpoint}    ${headers}    ${status_esperado}    ${codigo_esperado}=None    ${mensagem_esperada}=None
     ${response}=    GET On Session    api    ${endpoint}    headers=${headers}    expected_status=any
