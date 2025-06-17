@@ -1,7 +1,7 @@
 *** Settings ***
 Library           RequestsLibrary
 Resource          ../resources/variables.resource
-Resource          ../resources/keywords/validacao_erro_extrato_usuario.robot
+Resource          ../../resources/keywords/validacao_erro_extrato_usuario.robot
 
 *** Test Cases ***
 
