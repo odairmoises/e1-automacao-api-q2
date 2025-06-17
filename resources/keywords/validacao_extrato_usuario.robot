@@ -34,10 +34,10 @@ Carregar JSON de arquivo
     ${json}=    Evaluate    json.loads('''${conteudo}''')    modules=json
     RETURN    ${json}
 
-
 Validar Status Code
     [Arguments]    ${response}    ${status_esperado}
     Should Be Equal As Integers    ${response.status_code}    ${status_esperado}
+
 Validar Extrato Usuario Completo com responseBody
     [Arguments]    ${endpoint}    ${headers}    ${status_esperado}    ${arquivo_json_esperado}
     ${response}=    GET On Session    api    ${endpoint}    headers=${headers}    expected_status=any
@@ -50,8 +50,9 @@ Validar Extrato Usuario Completo com responseBody
         ${json_retorno}=    Evaluate    json.loads('''${response.content}''')    modules=json
         ${json_esperado}=    Carregar JSON De Arquivo    ${arquivo_json_esperado}
         ${qtde}=    Get Length    ${json_retorno['eventos']}
-        Validar Campos do Evento de Extrato    ${json_retorno['eventos'][0]}
+        Should Be True    ${qtde} > 0    msg=A lista de eventos retornada está vazia.
+        ${evento}=    Set Variable    ${json_retorno['eventos'][0]}
+        Validar Campos do Evento de Extrato    ${evento}
     END
 
     RETURN    ${response}
-
