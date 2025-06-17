@@ -1,6 +1,11 @@
 name: Robot Framework API Tests
 
 on:
+  schedule:
+    - cron: '0 22 * * 1-5'    # Executa de segunda a sexta às 22h
+    - cron: '5 22 * * *'    # Executa de segunda a sexta às 22h05s
+    - cron: '0 11 * * 1-5' # Executa de segunda a sexta às 11h
+    - cron: '0 14 * * *'    # Executa de segunda a sexta às 14h
   push:
     branches:
       - main
