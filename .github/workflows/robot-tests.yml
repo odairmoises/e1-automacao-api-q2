@@ -1,22 +1,18 @@
 name: Robot Framework API Tests Empresa 1
 
 on:
-  workflow_dispatch:  # <<< ADICIONE ISTO
-  
+  push:
+    branches:
+      - main  # Executa quando houver push na branch main
+  pull_request:
+  workflow_dispatch:
+    # Executa quando abrir ou atualizar um pull request (PR)
   schedule:
     # Executa o workflow automaticamente nos horários abaixo (em UTC)
     - cron: '33 15 * * *'  # 12:33 BRT
     - cron: '40 15 * * *'  # 12:40 BRT
     - cron: '45 15 * * *'  # 12:45 BRT
-
-  push:
-    branches:
-      - main  # Executa quando houver push na branch main
-
-  pull_request:
-    # Executa quando abrir ou atualizar um pull request (PR)
- 
-
+    
 jobs:
   run-tests:
     runs-on: ubuntu-latest  # Máquina virtual do Linux para executar o job
