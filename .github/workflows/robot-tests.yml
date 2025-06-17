@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - main  # Executa quando houver push na branch main
-  pull_request:
-  workflow_dispatch:
-    # Executa quando abrir ou atualizar um pull request (PR)
+  pull_request: # Executa quando abrir ou atualizar um pull request (PR)
+  workflow_dispatch: 
   schedule:
     # Executa o workflow automaticamente nos horários abaixo (em UTC)
     - cron: '33 15 * * *'  # 12:33 BRT
