@@ -1,6 +1,8 @@
 name: Robot Framework API Tests Empresa 1
 
 on:
+  workflow_dispatch:  # <<< ADICIONE ISTO
+  
   schedule:
     # Executa o workflow automaticamente nos horários abaixo (em UTC)
     - cron: '33 04 * * *'  # 01:33 BRT
@@ -13,7 +15,7 @@ on:
 
   pull_request:
     # Executa quando abrir ou atualizar um pull request (PR)
-  workflow_dispatch:  # <<< ADICIONE ISTO
+ 
 
 jobs:
   run-tests:
